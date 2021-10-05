@@ -3,6 +3,9 @@
 Icon?
 ._*
 
+# fix issue when switching package managers
+package-lock.json
+
 # Windows
 Thumbs.db
 ehthumbs.db
