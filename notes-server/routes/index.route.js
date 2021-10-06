@@ -1,12 +1,15 @@
 const express = require("express");
 const notes = require("./notes.route");
 const users = require("./users.route");
+const auth = require("./auth.route");
 
 const router = express.Router();
 
 router.use("/notes", notes);
 
 router.use("/users", users);
+
+router.use("/auth", auth);
 
 router.get("/health", (req, res) => {
   // https://gist.github.com/ali-kamalizade/05488b11e703b5e26c46e3a3d913bedf
@@ -23,4 +26,15 @@ router.get("/health", (req, res) => {
   }
 });
 
+router.use((err, req, res, next) => {
+  console.error(err.message);
+
+  if (err.name === "CastError") {
+    return res.status(400).send({ error: "malformed id" });
+  } else if (err.name === "ValidationError") {
+    return res.status(400).json({ error: err.message });
+  }
+
+  next(err);
+});
 module.exports = router;
