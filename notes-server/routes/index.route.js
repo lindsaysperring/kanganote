@@ -13,3 +13,5 @@ router.get("/health", (req, res) => {
   };
   res.send(JSON.stringify(health));
 });
+
+module.exports = router;

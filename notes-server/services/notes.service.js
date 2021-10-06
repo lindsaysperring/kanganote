@@ -1,4 +1,4 @@
-const Notes = require("../notes-server/models/notes.models");
+const Notes = require("../models/notes.models");
 
 const get = (_id) => {
   return Notes.findById(_id);
