@@ -20,7 +20,18 @@ const getAll = (req, res, next) => {
     .catch((err) => next(err));
 };
 
+const create = (req, res, next) => {
+  const { note } = req.body;
+  if (!note) return res.status(400).send("Note is a required field");
+  const newNote = notesService.create(req.userId, note);
+  newNote.save((err) => {
+    if (err) return next(err);
+    res.send(newNote);
+  });
+};
+
 module.exports = {
   get,
   getAll,
+  create,
 };

@@ -1,11 +1,16 @@
-const Notes = require("../models/notes.models");
+const Note = require("../models/notes.models");
 
 const get = (_id) => {
-  return Notes.findById(_id);
+  return Note.findById(_id);
 };
 
 const getAll = () => {
-  return Notes.find({});
+  return Note.find({});
 };
 
-module.exports = { get, getAll };
+const create = (userId, note) => {
+  const newNote = new Note({ note, createdAt: new Date(), owner: userId });
+  return newNote;
+};
+
+module.exports = { get, getAll, create };
