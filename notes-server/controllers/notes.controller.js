@@ -4,15 +4,17 @@ const get = (req, res, next) => {
   notesService
     .get(req.params._id)
     .then((note) => {
-      if (note) res.send(note);
-      else res.sendStatus(404);
+      if (note) {
+        if (note.owner != req.userId) return res.sendStatus(403);
+        res.send(note);
+      } else res.sendStatus(404);
     })
     .catch((err) => next(err));
 };
 
 const getAll = (req, res, next) => {
   notesService
-    .getAll()
+    .getAll(req.userId)
     .then((notes) => {
       if (notes) res.send(notes);
       else res.sendStatus(404);

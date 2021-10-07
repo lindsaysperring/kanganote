@@ -4,8 +4,8 @@ const get = (_id) => {
   return Note.findById(_id);
 };
 
-const getAll = () => {
-  return Note.find({});
+const getAll = (owner) => {
+  return Note.find({ owner });
 };
 
 const create = (userId, note) => {
