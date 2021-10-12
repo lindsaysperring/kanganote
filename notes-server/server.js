@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
-const swaggerJsdoc = require('swagger-jsdoc')
-const swaggerUi = require('swagger-ui-express')
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 app.use(express.json());
 
@@ -16,14 +19,15 @@ app.use("/api", routes);
 
 const options = {
   definition: {
-    swagger: '2.0',
+    swagger: "2.0",
     info: {
-      title: 'COMP3120 Note Taking API',
-      version: '1.0.0',
-      description: 'This is an api that saves notes to a database and authenticates users'
+      title: "COMP3120 Note Taking API",
+      version: "1.0.0",
+      description:
+        "This is an api that saves notes to a database and authenticates users",
     },
   },
-  apis: ['./routes/*.route.js'], // files containing annotations as above
+  apis: ["./routes/*.route.js"], // files containing annotations as above
 };
 
 const specs = swaggerJsdoc(options);
@@ -37,8 +41,12 @@ mongoose.connect(
   }
 );
 
+io.on("connection", (socket) => {
+  console.log("user connected");
+});
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
