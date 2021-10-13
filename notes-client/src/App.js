@@ -27,8 +27,7 @@ class App extends Component {
       this.setState({ uuid });
     });
     newSocket.on("update", (update) => {
-      console.log(update)
-      if (update.clientId === this.state.uuid) return;
+      console.log(update);
       editor.updateContents(update.delta);
     });
   }
@@ -96,6 +95,8 @@ class App extends Component {
             // this.setState({ quill: changes });
           }}
           ref={this.quillEditor}
+          modules={this.modules}
+          formats={this.formats}
         />
         <button
           onClick={() => {

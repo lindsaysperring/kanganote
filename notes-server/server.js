@@ -57,14 +57,16 @@ io.on("connection", (socket) => {
   });
   socket.emit("uuid", users.get(socket).id);
   socket.on("change", (message) => {
-    io.sockets.emit("update", {
+    socket.broadcast.emit("update", {
       clientId: users.get(socket).id,
       delta: message,
     });
     console.log(message);
   });
   socket.on("disconnect", () => {
+    console.log(`${users.get(socket).id} disconnected`)
     users.delete(socket);
+    
   });
 });
 
