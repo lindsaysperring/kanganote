@@ -1,5 +1,9 @@
 const notesService = require("../services/notes.service");
 
+/**
+ * 
+ * Returns specific note if user has access
+ */
 const get = (req, res, next) => {
   notesService
     .get(req.params._id, req.userId)
@@ -12,6 +16,10 @@ const get = (req, res, next) => {
     .catch((err) => next(err));
 };
 
+/**
+ * 
+ * returns all notes that user has access to
+ */
 const getAll = (req, res, next) => {
   notesService
     .getAll(req.userId)
@@ -22,6 +30,10 @@ const getAll = (req, res, next) => {
     .catch((err) => next(err));
 };
 
+/**
+ * 
+ * creates new note with body
+ */
 const create = (req, res, next) => {
   const { note } = req.body;
   if (!note) return res.status(400).send("Note is a required field");
@@ -32,6 +44,10 @@ const create = (req, res, next) => {
   });
 };
 
+/**
+ * 
+ * creates blank note and returns note object
+ */
 const createBlank = (req, res, next) => {
   if (!note) return res.status(400).send("Note is a required field");
   const newNote = notesService.create(req.userId, "");
@@ -41,6 +57,10 @@ const createBlank = (req, res, next) => {
   });
 };
 
+/**
+ * 
+ * updates existing note if user has access 
+ */
 const save = async (req, res, next) => {
   const { note } = req.body;
   if (!note) return res.status(400).send("Note is a required field");

@@ -4,6 +4,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 /**
  * Get Note by ID
  * @param {string} _id
+ * @param {string} userId 
  * @returns {object} Note object
  */
 const get = (_id, userId) => {
