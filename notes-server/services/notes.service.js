@@ -1,17 +1,22 @@
 const Note = require("../models/notes.models");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 /**
  * Get Note by ID
- * @param {string} _id 
+ * @param {string} _id
  * @returns {object} Note object
  */
-const get = (_id) => {
-  return Note.findById(_id);
+const get = (_id, userId) => {
+  console.log(userId)
+  return Note.findOne({
+    _id,
+    $or: [{ owner: userId }, { sharedWith: userId }],
+  });
 };
 
 /**
  * Gets all notes created by user
- * @param {string} owner 
+ * @param {string} owner
  * @returns {object} Note
  */
 const getAll = (owner) => {
@@ -20,8 +25,8 @@ const getAll = (owner) => {
 
 /**
  * Creates new note
- * @param {string} userId 
- * @param {string} note 
+ * @param {string} userId
+ * @param {string} note
  * @returns {object} Note
  */
 const create = (userId, note) => {

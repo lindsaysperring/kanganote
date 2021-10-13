@@ -98,7 +98,69 @@ router.route("/:_id").get(notesController.get);
  * @swagger
  * /api/notes:
  *  post:
- *      description: Return all notes for user
+ *      description: Create a new Note
+ *      tags: [Notes]
+ *      produces:
+ *          - application/json
+ *      consumes:
+ *          - application/json
+ *      parameters:
+ *          - in: header
+ *            name: Authorization
+ *            example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTY0Zjc1Zjk3NTk2OWRjOTBlNTk0YjYiLCJpYXQiOjE2MzQwMDY4Nzl9.BsMqStsAxrQNBM1yUj8MOB_oZua-Td7mLvjoqGSo3bs
+ *            schema:
+ *              type: string
+ *          - in: body
+ *            name: New note
+ *            description: New note to create
+ *            schema:
+ *              type: object
+ *              $ref: '#/definitions/New Note'
+ *      responses:
+ *          201:
+ *              description: Created note
+ *              schema:
+ *                  type: object
+ *                  $ref: '#/definitions/Note'
+ */
+router.route("/").post(notesController.create);
+
+/**
+ * @swagger
+ * /api/notes:
+ *  get:
+ *      description: Creates a new blank note
+ *      tags: [Notes]
+ *      produces:
+ *          - application/json
+ *      consumes:
+ *          - application/json
+ *      parameters:
+ *          - in: header
+ *            name: Authorization
+ *            example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTY0Zjc1Zjk3NTk2OWRjOTBlNTk0YjYiLCJpYXQiOjE2MzQwMDY4Nzl9.BsMqStsAxrQNBM1yUj8MOB_oZua-Td7mLvjoqGSo3bs
+ *            schema:
+ *              type: string
+ *          - in: body
+ *            name: New note
+ *            description: New note to create
+ *            schema:
+ *              type: object
+ *              $ref: '#/definitions/New Note'
+ *      responses:
+ *          201:
+ *              description: Created note
+ *              schema:
+ *                  type: object
+ *                  $ref: '#/definitions/Note'
+ */
+router.route("/new").get(notesController.createBlank);
+
+/**
+ * @swagger
+ * /api/notes:
+ *  patch:
+ *      description: Updates existing note
  *      tags: [Notes]
  *      produces:
  *          - application/json
@@ -123,6 +185,6 @@ router.route("/:_id").get(notesController.get);
  *                  type: object
  *                  $ref: '#/definitions/Note'
  */
-router.route("/").post(notesController.create);
+router.route("/save/:_id").patch(notesController.save);
 
 module.exports = router;
