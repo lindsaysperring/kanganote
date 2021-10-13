@@ -19,6 +19,9 @@ class App extends Component {
       console.log("error fetching notes...", err);
     }
   }
+  componentWillUnmount() {
+    this.state.socket.close();
+  }
   createNote = async (note) => {
     const notes = [note, ...this.state.notes];
     const newNotes = this.state.notes;
@@ -73,6 +76,13 @@ class App extends Component {
           <p onClick={() => this.updateFilter("completed")}>Completed</p>
           <p onClick={() => this.updateFilter("new")}>Pending</p>
         </div>
+        <button
+          onClick={() => {
+            this.setState({ quill: "<p>Test</p>" });
+          }}
+        >
+          Hello
+        </button>
       </div>
     );
   }
