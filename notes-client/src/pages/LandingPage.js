@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Field, Form } from 'formik';
+import {Link} from 'react-router-dom'
 import * as Yup from 'yup'
 
 import './LandingPage.css'
@@ -98,7 +99,7 @@ const LandingPage = () => {
                     Sign Up
                   </button>
 
-                  <p className ="alreadyHaveAnAcc">Already have an account? Click <a href="login">here</a> to log in.</p>
+                  <p className ="alreadyHaveAnAcc">Already have an account? Click to <Link to= "/login">Login</Link></p>
                 </div>
               </Form>
             )}
