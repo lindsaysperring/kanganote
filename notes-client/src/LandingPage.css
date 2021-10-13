@@ -1,0 +1,6 @@
+.columns{
+  text-align: center;
+  margin: 80px 10px 0px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
