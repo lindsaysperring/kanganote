@@ -4,3 +4,31 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+p {
+  color: red;
+}
+
+label{
+  margin-left: 198px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.form {
+  display: grid;
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+
+input {
+  width: 50%;
+  justify-self: center;
+  padding: 10px;
+}
+
+button {
+  font-weight: bolder;
+  margin-left: 50px;
+  padding: 10px 20px;
+}
