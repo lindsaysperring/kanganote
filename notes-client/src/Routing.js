@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/LoginPage";
+import NotesEditor from "./pages/NotesEditor";
 import Signup from "./pages/LandingPage";
 
 export const userContext = React.createContext({
@@ -21,6 +22,7 @@ const Routing = () => {
           <Route exact path="/" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/home" component={Home} />
+          <Route path="/editor" component={NotesEditor} />
         </Switch>
       </Router>
     </userContext.Provider>
