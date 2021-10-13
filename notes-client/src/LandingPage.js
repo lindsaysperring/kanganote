@@ -1,9 +1,23 @@
 import React from 'react'
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form } from 'formik';
+import * as Yup from 'yup'
 
 import './LandingPage.css'
 
 const LandingPage = () => {
+
+  const SignUpSchema = Yup.object({
+    firstName: Yup.string()
+    .required("First Name is required"),
+    lastName: Yup.string()
+    .required("Last Name is required"),
+    email: Yup.string()
+      .email("Invalid email address format")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be 6 characters at minimum")
+      .required("Password is required")
+  });
 
   return (
     <div className="backContainer">
@@ -22,6 +36,7 @@ const LandingPage = () => {
             email: '',
             password:'',
           }}
+          validationSchema={SignUpSchema}
           onSubmit={({ setSubmitting }) => {
             alert("Form is validated!")
             setSubmitting(false)
