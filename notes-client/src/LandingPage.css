@@ -1,3 +1,7 @@
+html {
+  background-color: #F8F8F8;
+}
+
 .columns{
   text-align: center;
   margin: 80px 10px 0px 40px;
@@ -5,20 +9,31 @@
   grid-template-columns: 1fr 1fr;
 }
 
+h1 {
+  margin-bottom: 6%;
+}
+
 p {
   color: red;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.alreadyHaveAnAcc{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 label{
-  margin-left: 198px;
-  margin-bottom: 10px;
+  margin-left: 23%;
+  margin-bottom: 2%;
   text-align: left;
 }
 
 .form {
   display: grid;
-  margin-bottom: 20px;
-  margin-left: 50px;
+  margin-bottom: 4%;
+  margin-left: 8%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 input {
@@ -28,7 +43,19 @@ input {
 }
 
 button {
+  background-color: #FFD966; /* maybe we can do colour of the year? grey and yellow? */
+  color: black;
+  border: none;
   font-weight: bolder;
-  margin-left: 50px;
+  text-align: center;
   padding: 10px 20px;
+  margin-left: 5%;
+}
+
+.backContainer {
+  background-image: url(./kanganote.png);
+  background-position: center center;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+
 }

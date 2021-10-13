@@ -23,12 +23,14 @@ const LandingPage = () => {
     <div className="backContainer">
       <div className="columns">
       <div className="info">
-        <h1> This is our Note taking website TITLE </h1>
-        <h3> intro text</h3>
-        <h3> intro img</h3>
+        <h1> Welcome to Kanganote! </h1>
+        <li>Easy note taking </li>
+        <li>Quick access</li>
+        <li>Cloud storage</li>
+
       </div>
       <div className="form">
-        <h1>This is the sign up form</h1>
+        <h1>Sign up here</h1>
         <Formik
           initialValues={{
             firstName: '',
@@ -81,7 +83,7 @@ const LandingPage = () => {
                 </div>
 
                 <div className="form">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Create a Password</label>
                 <Field
                   type="password"
                   name="password"
@@ -95,6 +97,8 @@ const LandingPage = () => {
                   <button type="submit">
                     Sign Up
                   </button>
+
+                  <p className ="alreadyHaveAnAcc">Already have an account? Click <a href="login">here</a> to log in.</p>
                 </div>
               </Form>
             )}
