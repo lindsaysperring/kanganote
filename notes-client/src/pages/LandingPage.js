@@ -7,6 +7,7 @@ import { Link, Redirect, useHistory } from "react-router-dom";
 import React, { useContext } from "react";
 
 import axios from "axios";
+import { baseURL } from "../utils/config";
 import { userContext } from "../Routing";
 
 const LandingPage = () => {
@@ -44,7 +45,7 @@ const LandingPage = () => {
             validationSchema={SignUpSchema}
             onSubmit={(values, { setSubmitting }) => {
               axios
-                .post("http://localhost:5000/api/auth/register", {
+                .post(`${baseURL}/api/auth/register`, {
                   name: `${values.firstName} ${values.lastName}`,
                   email: values.email,
                   password: values.password,

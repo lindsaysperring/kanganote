@@ -7,6 +7,7 @@ import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { baseURL } from "../utils/config";
 import { useHistory } from "react-router-dom";
 import { userContext } from "../Routing";
 
@@ -43,7 +44,7 @@ const LoginPage = () => {
             onSubmit={(values, { setSubmitting }) => {
               const { email, password } = values;
               axios
-                .post("http://localhost:5000/api/auth/login", {
+                .post(`${baseURL}/api/auth/login`, {
                   email,
                   password,
                 })
