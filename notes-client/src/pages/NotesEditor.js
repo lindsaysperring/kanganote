@@ -3,6 +3,7 @@ import "react-quill/dist/quill.snow.css";
 import React, { useEffect, useRef, useState } from "react";
 
 import ReactQuill from "react-quill";
+import { baseURL } from "../utils/config";
 import io from "socket.io-client";
 
 export default function NotesEditor() {
@@ -10,7 +11,7 @@ export default function NotesEditor() {
   const quillEditor = useRef(null);
 
   useEffect(() => {
-    const newSocket = io(`http://localhost:5000`);
+    const newSocket = io(`${baseURL}`);
     setSocket(newSocket);
     const editor = quillEditor.current.getEditor();
     newSocket.on("update", (update) => {
