@@ -64,10 +64,13 @@ io.on("connection", (socket) => {
     console.log(message);
   });
   socket.on("disconnect", () => {
-    console.log(`${users.get(socket).id} disconnected`)
+    console.log(`${users.get(socket).id} disconnected`);
     users.delete(socket);
-    
   });
+});
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "../notes-client/build/index.html"));
 });
 
 const PORT = process.env.PORT || 5000;

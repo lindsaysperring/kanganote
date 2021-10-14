@@ -1,0 +1,2 @@
+notes-client=https://github.com/heroku/heroku-buildpack-nodejs
+notes-server=https://github.com/heroku/heroku-buildpack-nodejs
