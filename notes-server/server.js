@@ -20,8 +20,11 @@ const cors = require("cors");
 
 const mongoose = require("mongoose");
 const routes = require("./routes/index.route");
+const path = require("path");
 
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, "../notes-client/build")));
 
 app.use("/api", routes);
 
