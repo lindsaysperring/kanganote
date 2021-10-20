@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import LandingPage from './LandingPage';
+import Routing from './Routing';
 
 ReactDOM.render(
   <React.StrictMode>
-    <LandingPage />
+    <Routing />
   </React.StrictMode>,
   document.getElementById('root')
 );

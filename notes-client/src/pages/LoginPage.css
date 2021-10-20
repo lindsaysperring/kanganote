@@ -1,5 +1,5 @@
 html {
-  background-color: #FDFEFE;
+  background-color: #F8F8F8;
 }
 
 .columns{
@@ -18,7 +18,7 @@ p {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.alreadyHaveAnAcc{
+.dontHaveAnAcc{
   color: black;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -53,9 +53,13 @@ button {
 }
 
 .backContainer {
-  background-image: url(./kanganote.png);
+  background-image: url(../images/kanganote.png);
   background-position: center center;
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
 
+}
+
+.info {
+  min-height: 560px;
 }

@@ -1,16 +1,13 @@
 import React from 'react'
 import { Formik, Field, Form } from 'formik';
+import {Link} from 'react-router-dom'
 import * as Yup from 'yup'
 
-import './LandingPage.css'
+import './LoginPage.css'
 
-const LandingPage = () => {
+const LoginPage = () => {
 
   const SignUpSchema = Yup.object({
-    firstName: Yup.string()
-    .required("First Name is required"),
-    lastName: Yup.string()
-    .required("Last Name is required"),
     email: Yup.string()
       .email("Invalid email address format")
       .required("Email is required"),
@@ -46,30 +43,7 @@ const LandingPage = () => {
           >
             {({ touched, errors, isSubmitting }) => (
               <Form>
-                <div className="form">
-                <label htmlFor="firstName">First Name</label>
-                <Field
-                  type="text"
-                  name="firstName"
-                  placeholder="Enter Your First Name"
-                />
-                {errors.firstName && touched.firstName && (
-                  <p>{errors.firstName}</p>
-                )}
-                </div>
-
-                <div className="form">
-                <label htmlFor="lastName">Last Name</label>
-                <Field
-                  type="text"
-                  name="lastName"
-                  placeholder="Enter Your Last Name"
-                />
-                {errors.lastName && touched.lastName && (
-                  <p>{errors.lastName}</p>
-                )}
-                </div>
-
+                
                 <div className="form">
                 <label htmlFor="email">Email</label>
                 <Field
@@ -83,7 +57,7 @@ const LandingPage = () => {
                 </div>
 
                 <div className="form">
-                <label htmlFor="password">Create a Password</label>
+                <label htmlFor="password">Password</label>
                 <Field
                   type="password"
                   name="password"
@@ -95,10 +69,10 @@ const LandingPage = () => {
                 </div>
                 <div className="button">
                   <button type="submit">
-                    Sign Up
+                    Login Up
                   </button>
 
-                  <p className ="alreadyHaveAnAcc">Already have an account? Click <a href="login">here</a> to log in.</p>
+                  <p className ="dontHaveAnAcc">Don't have an account? Click to <Link to= "/"> Register</Link></p>
                 </div>
               </Form>
             )}
@@ -110,5 +84,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
-
+export default LoginPage
