@@ -27,7 +27,7 @@ const LoginPage = () => {
 
       </div>
       <div className="form">
-        <h1>Sign up here</h1>
+        <h1>Login here</h1>
         <Formik
           initialValues={{
             firstName: '',
@@ -69,7 +69,7 @@ const LoginPage = () => {
                 </div>
                 <div className="button">
                   <button type="submit">
-                    Login Up
+                    Login
                   </button>
 
                   <p className ="dontHaveAnAcc">Don't have an account? Click to <Link to= "/"> Register</Link></p>

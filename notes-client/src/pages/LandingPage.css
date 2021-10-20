@@ -2,6 +2,11 @@ html {
   background-color: #FDFEFE;
 }
 
+.info li {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
 .columns{
   text-align: center;
   margin: 80px 10px 0px 40px;
