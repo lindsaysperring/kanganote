@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Routing from './Routing';
+import Dashboard from './pages/Dashboard';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routing />
+    <Dashboard />
   </React.StrictMode>,
   document.getElementById('root')
 );
