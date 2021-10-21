@@ -2,8 +2,8 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var NotesSchema = new Schema({
   note: {
-    type: String,
-    required: true,
+    type: Map,
+    // required: true,
   },
   createdAt: {
     type: Date,

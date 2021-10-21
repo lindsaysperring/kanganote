@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom";
 
+import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/LoginPage";
 import NotesEditor from "./pages/NotesEditor";
@@ -21,8 +27,9 @@ const Routing = () => {
         <Switch>
           <Route exact path="/" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/home" component={Home} />
-          <Route path="/editor" component={NotesEditor} />
+          <Route path="/home" component={Dashboard} />
+          <Route path="/editor/:note_id" component={NotesEditor} />
+          <Route render={() => <Redirect to="/" />} />
         </Switch>
       </Router>
     </userContext.Provider>
