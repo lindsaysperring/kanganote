@@ -1,4 +1,4 @@
-import "./LoginPage.css";
+import "./LandingPage.css";
 
 import * as Yup from "yup";
 
@@ -10,6 +10,7 @@ import axios from "axios";
 import { baseURL } from "../utils/config";
 import { useHistory } from "react-router-dom";
 import { userContext } from "../Routing";
+import kanganote from "../images/kanganote.png"
 
 const LoginPage = () => {
   const SignUpSchema = Yup.object({
@@ -32,6 +33,7 @@ const LoginPage = () => {
           <li>Easy note taking </li>
           <li>Quick access</li>
           <li>Cloud storage</li>
+          <div className="kanganote-image"/>
         </div>
         <div className="form">
           <h1>Sign up here</h1>

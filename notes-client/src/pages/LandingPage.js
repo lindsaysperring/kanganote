@@ -32,6 +32,7 @@ const LandingPage = () => {
           <li>Easy note taking </li>
           <li>Quick access</li>
           <li>Cloud storage</li>
+          <div className="kanganote-image"/>
         </div>
         <div className="form">
           <h1>Sign up here</h1>
