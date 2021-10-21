@@ -67,49 +67,54 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <div>
-        <img src={logo} />
-      </div>
-      <div>
-        {/**
-         * Example of how to get username and email
-         */}
-        <h2>Welcome {userData.user.name}</h2>
-        <p>Email {userData.user.email}</p>
-        {notes.status !== "loading" ? (
-          <div className="note-layout">
-            {notes.data.map((note) => (
-              <div className="note-item">
-                <p>ID: {note.id}</p>
-                <button
-                  className="note-edit-button"
-                  onClick={() => {
-                    history.push(`/editor/${note.id}`);
-                  }}
-                >
-                  Edit note
-                </button>
-              </div>
-            ))}
+    <>
+      {userData.isLoggedIn && (
+        <div>
+          <div>
+            <img src={logo} />
           </div>
-        ) : (
-          <p>Loading</p>
-        )}
-        <button
-          id="newnotesbutton"
-          onClick={newNote}
-          style={{ cursor: "pointer" }}
-        >
-          <Icon size={25} icon={plus} /> New Notes
-        </button>
-        <div id="dashboardmessage">
-          <p>
-            Get organised with your first Kanganote today by adding new notes!
-          </p>
+          <div>
+            {/**
+             * Example of how to get username and email
+             */}
+            <h2>Welcome {userData.user.name}</h2>
+            <p>Email {userData.user.email}</p>
+            {notes.status !== "loading" ? (
+              <div className="note-layout">
+                {notes.data.map((note) => (
+                  <div className="note-item">
+                    <p>ID: {note.id}</p>
+                    <button
+                      className="note-edit-button"
+                      onClick={() => {
+                        history.push(`/editor/${note.id}`);
+                      }}
+                    >
+                      Edit note
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>Loading</p>
+            )}
+            <button
+              id="newnotesbutton"
+              onClick={newNote}
+              style={{ cursor: "pointer" }}
+            >
+              <Icon size={25} icon={plus} /> New Notes
+            </button>
+            <div id="dashboardmessage">
+              <p>
+                Get organised with your first Kanganote today by adding new
+                notes!
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
