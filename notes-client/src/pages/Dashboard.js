@@ -63,12 +63,15 @@ const Dashboard = () => {
         <img src={logo} />
       </div>
       <div>
+        <h2>Welcome {userData.user.name}</h2>
+        <p>Email {userData.user.email}</p>
         {notes.status !== "loading" ? (
           <div className="note-layout">
             {notes.data.map((note) => (
               <div className="note-item">
                 <p>ID: {note.id}</p>
-                <button className="note-edit-button"
+                <button
+                  className="note-edit-button"
                   onClick={() => {
                     history.push(`/editor/${note.id}`);
                   }}
