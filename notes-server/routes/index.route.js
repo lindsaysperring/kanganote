@@ -1,6 +1,7 @@
 const express = require("express");
 const notes = require("./notes.route");
 const auth = require("./auth.route");
+const users = require("./users.route");
 const authMiddleware = require("../middleware/auth");
 
 const router = express.Router();
@@ -10,6 +11,8 @@ router.use("/auth", auth);
 router.use(authMiddleware);
 
 router.use("/notes", notes);
+
+router.use("/users", users);
 
 router.get("/health", (req, res) => {
   // https://gist.github.com/ali-kamalizade/05488b11e703b5e26c46e3a3d913bedf

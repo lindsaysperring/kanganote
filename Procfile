@@ -1,0 +1,1 @@
+web: cd notes-server && npm run start

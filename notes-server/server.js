@@ -21,9 +21,12 @@ const cors = require("cors");
 
 const mongoose = require("mongoose");
 const routes = require("./routes/index.route");
+const path = require("path");
 const config = require("./config");
 
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, "../notes-client/build")));
 
 app.use("/api", routes);
 
@@ -99,6 +102,10 @@ io.on("connection", (socket) => {
     console.log(`${users.get(socket).id} disconnected`);
     users.delete(socket);
   });
+});
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "../notes-client/build/index.html"));
 });
 
 const PORT = process.env.PORT || 5000;
