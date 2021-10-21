@@ -39,16 +39,23 @@ const login = (req, res, next) => {
     return res.status(400).send("Email and Password are required.");
   }
 
-  userService.getByEmail(email).then((user) => {
-    if (!user) return res.status(401).send("Invalid email and/or password");
-    bcrypt.compare(password, user.password).then((result) => {
-      if (result) {
-        return res.send({ token: genJWT(user) });
-      } else {
-        return res.status(401).send("Invalid email and/or password");
-      }
-    });
-  });
+  userService
+    .getByEmail(email)
+    .then((user) => {
+      if (!user) return res.status(401).send("Invalid email and/or password");
+      bcrypt.compare(password, user.password).then((result) => {
+        if (result) {
+          return res.send({
+            token: genJWT(user),
+            name: user.name,
+            email: user.email,
+          });
+        } else {
+          return res.status(401).send("Invalid email and/or password");
+        }
+      });
+    })
+    .catch((err) => next(err));
 };
 
 module.exports = { register, login };
