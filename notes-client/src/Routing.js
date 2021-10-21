@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
-import Home from "./pages/Home";
 import Login from "./pages/LoginPage";
 import NotesEditor from "./pages/NotesEditor";
 import Signup from "./pages/LandingPage";
