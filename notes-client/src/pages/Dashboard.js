@@ -11,6 +11,9 @@ import { useHistory } from "react-router";
 import { userContext } from "../Routing";
 
 const Dashboard = () => {
+  /**
+   * Gets user data from react context, accessible from any component in routing
+   */
   const { userData } = useContext(userContext);
   const history = useHistory();
   const [notes, setNotes] = useState({
@@ -19,6 +22,9 @@ const Dashboard = () => {
     error: null,
   });
 
+  /**
+   * Redirects user to landing page if not logged in
+   */
   useEffect(() => {
     if (!userData.isLoggedIn) {
       return history.push("/");
@@ -26,6 +32,9 @@ const Dashboard = () => {
     getNotes();
   }, []);
 
+  /**
+   * Generates Authentication header for axios with user token
+   */
   const authHeader = getAuthHeader(userData);
 
   const newNote = () => {
@@ -63,6 +72,9 @@ const Dashboard = () => {
         <img src={logo} />
       </div>
       <div>
+        {/**
+         * Example of how to get username and email
+         */}
         <h2>Welcome {userData.user.name}</h2>
         <p>Email {userData.user.email}</p>
         {notes.status !== "loading" ? (
