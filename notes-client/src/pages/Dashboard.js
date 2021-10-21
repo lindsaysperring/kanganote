@@ -14,8 +14,11 @@ const Dashboard = () => {
       <div>
         <img src={logo}/>
       </div>
-      <div>
+      <div id="newnotesbutton">
         <button> <Icon size={25} icon={plus} /> New Notes </button>
+      </div>
+      <div id="dashboardmessage">
+        <p>Get organised with your first Kanganote today by adding new notes!</p>
       </div>
     </div>
   )
