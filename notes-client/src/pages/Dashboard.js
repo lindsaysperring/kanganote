@@ -64,28 +64,14 @@ const Dashboard = () => {
       </div>
       <div>
         {notes.status !== "loading" ? (
-          <div
-            style={{
-              display: "grid",
-              gap: "20px",
-              gridTemplateColumns: "1fr 1fr 1fr 1fr",
-              padding: "1em",
-            }}
-          >
+          <div className="note-layout">
             {notes.data.map((note) => (
-              <div
-                style={{
-                  backgroundColor: "lightgray",
-                  padding: "1em",
-                  borderRadius: "0.7em",
-                }}
-              >
+              <div className="note-item">
                 <p>ID: {note.id}</p>
-                <button
+                <button className="note-edit-button"
                   onClick={() => {
                     history.push(`/editor/${note.id}`);
                   }}
-                  style={{ cursor: "pointer" }}
                 >
                   Edit note
                 </button>

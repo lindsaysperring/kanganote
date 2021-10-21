@@ -1,7 +1,5 @@
 import './index.css';
 
-import App from './App';
-import Dashboard from './pages/Dashboard';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routing from './Routing';
