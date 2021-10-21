@@ -1,3 +1,8 @@
+⚡️Colour Choices⚡️
+We chose a very light grey because white can be too bright for human eyes, light grey is softer for our eyes to read. And we chose yellow as the secondary/button colour because yellow is the colour of 2021, and it also represents Australia💛
+
+more notes will be added later...
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

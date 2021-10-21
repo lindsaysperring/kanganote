@@ -1,5 +1,5 @@
 html {
-  background-color: #F8F8F8;
+  background-color: #FDFEFE;
 }
 
 .columns{
@@ -62,4 +62,9 @@ button {
 
 .info {
   min-height: 560px;
+}
+
+.info li {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }

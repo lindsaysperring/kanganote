@@ -84,7 +84,9 @@ const LoginPage = () => {
                   )}
                 </div>
                 <div className="button">
-                  <button type="submit">Login Up</button>
+                  <button type="submit">
+                    Login
+                  </button>
 
                   <p className="dontHaveAnAcc">
                     Don't have an account? Click to{" "}

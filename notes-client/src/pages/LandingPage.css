@@ -1,5 +1,10 @@
 html {
-  background-color: #F8F8F8;
+  background-color: #FDFEFE;
+}
+
+.info li {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .columns{
