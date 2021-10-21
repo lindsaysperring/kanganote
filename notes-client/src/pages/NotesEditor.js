@@ -36,12 +36,12 @@ export default function NotesEditor() {
     });
 
     newSocket.emit("getNote", note_id);
-
+    var interval;
     newSocket.once("load-note", (note) => {
       console.log(note);
       editor.setContents(note);
       editor.enable();
-      setInterval(() => {
+      interval = setInterval(() => {
         axios
           .patch(
             `${baseURL}/api/notes/save/${note_id}`,
@@ -56,6 +56,7 @@ export default function NotesEditor() {
 
     return () => {
       newSocket.close();
+      clearInterval(interval)
     };
   }, []);
 
