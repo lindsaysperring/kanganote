@@ -28,6 +28,7 @@ export default function NotesEditor() {
     setSocket(newSocket);
     const editor = quillEditor.current.getEditor();
     editor.disable();
+    editor.setText("Loading.....")
 
     newSocket.on("update", (update) => {
       console.log("update", update);
