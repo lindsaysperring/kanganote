@@ -73,13 +73,19 @@ const Dashboard = () => {
             }}
           >
             {notes.data.map((note) => (
-              <div style={{ backgroundColor: "lightgray", padding: "1em", borderRadius: "0.7em" }}>
+              <div
+                style={{
+                  backgroundColor: "lightgray",
+                  padding: "1em",
+                  borderRadius: "0.7em",
+                }}
+              >
                 <p>ID: {note.id}</p>
                 <button
                   onClick={() => {
                     history.push(`/editor/${note.id}`);
                   }}
-                  style={{cursor: "pointer"}}
+                  style={{ cursor: "pointer" }}
                 >
                   Edit note
                 </button>
@@ -89,9 +95,18 @@ const Dashboard = () => {
         ) : (
           <p>Loading</p>
         )}
-        <button onClick={newNote} style={{cursor: "pointer"}}>
+        <button
+          id="newnotesbutton"
+          onClick={newNote}
+          style={{ cursor: "pointer" }}
+        >
           <Icon size={25} icon={plus} /> New Notes
         </button>
+        <div id="dashboardmessage">
+          <p>
+            Get organised with your first Kanganote today by adding new notes!
+          </p>
+        </div>
       </div>
     </div>
   );
