@@ -1,5 +1,5 @@
 img {
-  width: 20%;
+  width: 20vh;
 }
 
 #newnotesbutton button {
@@ -14,4 +14,24 @@ img {
   text-align: center;
   font-size: 18px;
   margin-top: 10%;
+}
+
+.note-layout {
+  padding: 1em;
+  gap: 20px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.note-item {
+  background-color: rgb(230, 230, 230);
+  border-radius: 0.7em;
+  padding: 1em;
+  flex-basis: auto;
+  flex-grow: 5;
+  flex-shrink: 5;
+}
+
+.note-edit-button {
+  cursor: pointer;
 }
