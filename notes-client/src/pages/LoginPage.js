@@ -71,7 +71,7 @@ const LoginPage = () => {
                     name="email"
                     placeholder="Enter Your Email"
                   />
-                  {errors.email && touched.email && <p>{errors.email}</p>}
+                  {errors.email && touched.email && <p className="error">{errors.email}</p>}
                 </div>
 
                 <div className="form">
@@ -82,7 +82,7 @@ const LoginPage = () => {
                     placeholder="Enter Your Password"
                   />
                   {errors.password && touched.password && (
-                    <p>{errors.password}</p>
+                    <p className="error">{errors.password}</p>
                   )}
                 </div>
                 <div className="button">

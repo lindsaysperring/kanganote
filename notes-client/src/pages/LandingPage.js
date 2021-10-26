@@ -73,7 +73,7 @@ const LandingPage = () => {
                     placeholder="Enter Your First Name"
                   />
                   {errors.firstName && touched.firstName && (
-                    <p>{errors.firstName}</p>
+                    <p className="error">{errors.firstName}</p>
                   )}
                 </div>
 
@@ -85,7 +85,7 @@ const LandingPage = () => {
                     placeholder="Enter Your Last Name"
                   />
                   {errors.lastName && touched.lastName && (
-                    <p>{errors.lastName}</p>
+                    <p className="error">{errors.lastName}</p>
                   )}
                 </div>
 
@@ -96,7 +96,7 @@ const LandingPage = () => {
                     name="email"
                     placeholder="Enter Your Email"
                   />
-                  {errors.email && touched.email && <p>{errors.email}</p>}
+                  {errors.email && touched.email && <p className="error">{errors.email}</p>}
                 </div>
 
                 <div className="form">
@@ -107,7 +107,7 @@ const LandingPage = () => {
                     placeholder="Enter Your Password"
                   />
                   {errors.password && touched.password && (
-                    <p>{errors.password}</p>
+                    <p className="error">{errors.password}</p>
                   )}
                 </div>
                 <div className="button">
