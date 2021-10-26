@@ -77,8 +77,8 @@ const Dashboard = () => {
             {/**
              * Example of how to get username and email
              */}
-            <h2>Welcome {userData.user.name}</h2>
-            <p>Email {userData.user.email}</p>
+            <h2>Welcome {userData.user.name}!</h2>
+            {/* <p>Email: {userData.user.email}</p> */}
             {notes.status !== "loading" ? (
               <div className="note-layout">
                 {notes.data.map((note) => (
@@ -98,7 +98,7 @@ const Dashboard = () => {
             ) : (
               <p>Loading</p>
             )}
-            <button
+            <button className="newnotesbutton"
               id="newnotesbutton"
               onClick={newNote}
               style={{ cursor: "pointer" }}
