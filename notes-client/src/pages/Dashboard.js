@@ -78,6 +78,15 @@ const Dashboard = () => {
              * Example of how to get username and email
              */}
             <h2>Welcome {userData.user.name}!</h2>
+
+            <button className="newnotesbutton"
+              id="newnotesbutton"
+              onClick={newNote}
+              style={{ cursor: "pointer" }}
+            >
+              <Icon size={25} icon={plus} /> New Notes
+            </button>
+
             {/* <p>Email: {userData.user.email}</p> */}
             {notes.status !== "loading" ? (
               <div className="note-layout">
@@ -98,13 +107,13 @@ const Dashboard = () => {
             ) : (
               <p>Loading</p>
             )}
-            <button className="newnotesbutton"
+            {/* <button className="newnotesbutton"
               id="newnotesbutton"
               onClick={newNote}
               style={{ cursor: "pointer" }}
             >
               <Icon size={25} icon={plus} /> New Notes
-            </button>
+            </button> */}
             <div id="dashboardmessage">
               <p>
                 Get organised with your first Kanganote today by adding new
