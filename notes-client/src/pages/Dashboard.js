@@ -9,6 +9,8 @@ import logo from "../images/Logo.png";
 import { plus } from "react-icons-kit/metrize/plus";
 import { useHistory } from "react-router";
 import { userContext } from "../Routing";
+import SideMenu from "./Menu/SideMenu";
+
 
 const Dashboard = () => {
   /**
@@ -68,6 +70,7 @@ const Dashboard = () => {
 
   return (
     <>
+    <SideMenu/>
       {userData.isLoggedIn && (
         <div>
           <div>
