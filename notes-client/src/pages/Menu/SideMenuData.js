@@ -6,9 +6,9 @@ import * as CgIcons from "react-icons/cg";
 
 export const SidebarData = [
   {
-    title: 'Profile',
+    // title: 'Profile',
     path: '/profile',
-    icon: <CgIcons.CgProfile />,
+    icon: <CgIcons.CgProfile style={{height:'150%', width:'150%', alignContent:'center'}}/> ,
     cName: 'nav-text'
   },
   {
