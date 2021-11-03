@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 
 import { userContext } from "../../Routing";
 
-import './Profile.css'
+// import './Profile.css'
 
 function Profile() {
 
