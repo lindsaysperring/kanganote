@@ -61,8 +61,21 @@ const changeUserInfo = (req, res, next) => {
     .catch((err) => next(err));
 };
 
+const searchByEmail = (req, res, next) => {
+  const email = req.query.email;
+  if (!email) return res.sendStatus(400);
+  userService
+    .searchEmail(email)
+    .then((data) => {
+      if (data) res.send(data);
+      else res.sendStatus(404);
+    })
+    .catch((err) => next(err));
+};
+
 module.exports = {
   get,
   getAll,
   changeUserInfo,
+  searchByEmail,
 };
