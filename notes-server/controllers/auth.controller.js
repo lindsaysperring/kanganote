@@ -49,6 +49,7 @@ const login = (req, res, next) => {
             token: genJWT(user),
             name: user.name,
             email: user.email,
+            userId: user.id,
           });
         } else {
           return res.status(401).send("Invalid email and/or password");

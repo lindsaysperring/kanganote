@@ -1,4 +1,5 @@
 const notesService = require("../services/notes.service");
+const usersService = require("../services/users.service");
 
 /**
  *
@@ -74,10 +75,53 @@ const save = async (req, res, next) => {
   });
 };
 
+/**
+ * Updates existing note parameters if user has access
+ */
+const update = async (req, res, next) => {
+  const { note, sharedWith } = req.body;
+  if (!note && !sharedWith) {
+    res.status(400).send("At least one parameter required.");
+    return;
+  }
+
+  const existingNote = await notesService.get(req.params._id, req.userId);
+  if (!existingNote) return res.sendStatus(404);
+  if (existingNote.owner != req.userId) {
+    res.sendStatus(403);
+    return;
+  }
+  if (note) {
+    existingNote.note = note;
+  }
+  if (sharedWith) {
+    if (!Array.isArray(sharedWith)) {
+      res.status(400).send("sharedWith must be an array.");
+      return;
+    }
+
+    for (const userId of sharedWith) {
+      const user = await usersService.get(userId);
+      if (!user) {
+        res.status(400).send(`userId ${userId} is invalid`);
+        return;
+      }
+    }
+
+    existingNote.sharedWith = sharedWith;
+  }
+  existingNote.lastModified = time.now()
+  existingNote.save((err) => {
+    if (err) return next(err);
+    res.status(200).send(existingNote);
+  });
+};
+
 module.exports = {
   get,
   getAll,
   create,
   createBlank,
   save,
+  update,
 };

@@ -21,38 +21,15 @@ const getAll = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-const changePassword = (req, res, next) => {
-  const { password } = req.body;
-
-  if (!password) return res.status(400).send("Password is required");
-  else if (password == "")
-    return res.status(400).send("Password cannot be empty");
-
-  userService
-    .get(req.userId)
-    .then(async (user) => {
-      if (!user) return res.status(401);
-      const hashedPassword = await bcrypt
-        .hash(password, 12)
-        .then((hash) => hash);
-      user.password = hashedPassword;
-      user.save((err) => {
-        if (err) return next(err);
-        res.status(200).send("Password updated");
-      });
-    })
-    .catch((err) => next(err));
-};
-
 const changeUserInfo = (req, res, next) => {
-  const { name, email } = req.body;
+  const { name, email, password } = req.body;
 
-  if (!name || !email)
+  if (!name && !email && !password)
     return res.status(400).send("Name and email are required.");
   console.log(req.userId);
   userService
     .get(req.userId)
-    .then((user) => {
+    .then(async (user) => {
       if (!user) return res.status(401);
       let updated = false;
       if (user.name != name && name != "") {
@@ -64,7 +41,15 @@ const changeUserInfo = (req, res, next) => {
         user.email = email;
         updated = true;
       }
+      if (password != "") {
+        const hashedPassword = await bcrypt
+          .hash(password, 12)
+          .then((hash) => hash);
+        user.password = hashedPassword;
+        updated = true;
+      }
       if (updated) {
+        user.lastUpdated = Date.now();
         user.save((err) => {
           if (err) return next(err);
           res.status(200).send({ name: user.name, email: user.email });
@@ -79,6 +64,5 @@ const changeUserInfo = (req, res, next) => {
 module.exports = {
   get,
   getAll,
-  changePassword,
   changeUserInfo,
 };
