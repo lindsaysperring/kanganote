@@ -25,6 +25,19 @@
  *          note:
  *              type: string
  *              example: this is a test
+ *  Updated Note:
+ *      properties:
+ *          email:
+ *              type: string
+ *              example: john@smith.com
+ *          password:
+ *              type: string
+ *              example: thisisasecurepassword *
+ *          sharedWith:
+ *              type: array
+ *              items:
+ *                  type: string
+ *                  example: 6164f75f975969dc90e594b6
  */
 /**
  * @swagger
@@ -186,5 +199,36 @@ router.route("/").post(notesController.create);
  *                  $ref: '#/definitions/Note'
  */
 router.route("/save/:_id").patch(notesController.save);
+
+/**
+ * @swagger
+ * /api/notes:
+ *  patch:
+ *      description: Updates existing note
+ *      tags: [Notes]
+ *      produces:
+ *          - application/json
+ *      consumes:
+ *          - application/json
+ *      parameters:
+ *          - in: header
+ *            name: Authorization
+ *            example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTY0Zjc1Zjk3NTk2OWRjOTBlNTk0YjYiLCJpYXQiOjE2MzQwMDY4Nzl9.BsMqStsAxrQNBM1yUj8MOB_oZua-Td7mLvjoqGSo3bs
+ *            schema:
+ *              type: string
+ *          - in: body
+ *            name: Parameters to update
+ *            description: Parameters to update. At least one needed
+ *            schema:
+ *              type: object
+ *              $ref: '#/definitions/Updated Note'
+ *      responses:
+ *          200:
+ *              description: Updated note
+ *              schema:
+ *                  type: object
+ *                  $ref: '#/definitions/Note'
+ */
+router.route("/:_id").patch(notesController.update);
 
 module.exports = router;

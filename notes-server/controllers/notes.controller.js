@@ -110,7 +110,7 @@ const update = async (req, res, next) => {
 
     existingNote.sharedWith = sharedWith;
   }
-  existingNote.lastModified = time.now()
+  existingNote.lastModified = new Date();
   existingNote.save((err) => {
     if (err) return next(err);
     res.status(200).send(existingNote);
