@@ -39,7 +39,7 @@ export default function NotesEditor() {
     var interval;
     newSocket.once("load-note", (note) => {
       console.log(note);
-      editor.setContents(note);
+      editor.setContents(note.note);
       editor.enable();
       interval = setInterval(() => {
         axios

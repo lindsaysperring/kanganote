@@ -1,4 +1,5 @@
 const User = require("../models/user.models");
+const {FuzzySearch}=require('mongoose-fuzzy-search-next');
 
 /**
  * Gets user by ID
@@ -26,4 +27,13 @@ const getAll = () => {
   return User.find({});
 };
 
-module.exports = { get, getAll, getByEmail };
+/**
+ * 
+ * @param {string} searchTerm 
+ * @returns array of users
+ */
+const searchEmail = (searchTerm) => {
+  return User.find({email: {$regex: searchTerm, $options: 'i'}});
+};
+
+module.exports = { get, getAll, getByEmail, searchEmail };

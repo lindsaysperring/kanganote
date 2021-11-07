@@ -1,8 +1,8 @@
 const express = require("express");
 const http = require("http");
 const { v4: uuidv4 } = require("uuid");
-const jwt = require('jsonwebtoken')
-const app = express();
+const jwt = require("jsonwebtoken");
+const app = require("./app");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const server = http.createServer(app);
@@ -15,36 +15,11 @@ const io = new Server(server, {
   },
 });
 
-app.use(express.json());
-
-const cors = require("cors");
-
 const mongoose = require("mongoose");
 const routes = require("./routes/index.route");
 const path = require("path");
 const config = require("./config");
 
-app.use(cors());
-
-app.use(express.static(path.join(__dirname, "../notes-client/build")));
-
-app.use("/api", routes);
-
-const options = {
-  definition: {
-    swagger: "2.0",
-    info: {
-      title: "COMP3120 Note Taking API",
-      version: "1.0.0",
-      description:
-        "This is an api that saves notes to a database and authenticates users",
-    },
-  },
-  apis: ["./routes/*.route.js"], // files containing annotations as above
-};
-
-const specs = swaggerJsdoc(options);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 const users = new Map();
 
 mongoose.connect(
@@ -64,7 +39,7 @@ io.on("connection", (socket) => {
       const decoded = jwt.verify(token, config.secret);
       if (decoded) {
         var userId = decoded.userId;
-        console.log(userId)
+        console.log(userId);
       } else {
         return socket.disconnect();
       }
@@ -76,7 +51,7 @@ io.on("connection", (socket) => {
   users.set(socket, {
     id: userId,
   });
-  
+
   socket.on("getNote", async (noteId) => {
     console.log(noteId);
     const note = await notesService.get(noteId, userId).catch((err) => ({
@@ -84,7 +59,7 @@ io.on("connection", (socket) => {
     }));
     if (note && !note.error) {
       socket.join(noteId);
-      socket.emit("load-note", note.note);
+      socket.emit("load-note", note);
     } else if (note && note.error) {
       socket.emit("error", { error: "Invalid noteId" });
     }
@@ -102,10 +77,6 @@ io.on("connection", (socket) => {
     console.log(`${users.get(socket).id} disconnected`);
     users.delete(socket);
   });
-});
-
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "../notes-client/build/index.html"));
 });
 
 const PORT = process.env.PORT || 5000;

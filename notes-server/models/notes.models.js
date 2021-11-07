@@ -23,6 +23,7 @@ var NotesSchema = new Schema({
       ref: "Users",
     },
   ],
+  completed: {type: Boolean, default: false},
 });
 
 NotesSchema.set("toJSON", {
