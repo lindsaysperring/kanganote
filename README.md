@@ -31,6 +31,7 @@ The frontend application is available i nthe `notes-client` folder and the expre
 * The routes are within the `routes` folder. This use the controllers and bind them to route paths.
 * JWT authentication middleware is in the `middleware` folder
 * The `utils` folder contains the function to generate JWTs.
+* Swagger docs located at https://cryptic-everglades-79395.herokuapp.com/api-docs/
 # Next Steps
 The next steps for this project are to complete the frontend, and to finish implementing the edit user profile and sharing features.
 
