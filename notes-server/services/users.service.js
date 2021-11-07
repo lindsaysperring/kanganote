@@ -2,7 +2,7 @@ const User = require("../models/user.models");
 
 /**
  * Gets user by ID
- * @param {string} _id 
+ * @param {string} _id
  * @returns {object} User
  */
 const get = (_id) => {
@@ -11,11 +11,11 @@ const get = (_id) => {
 
 /**
  * Gets user by email
- * @param {string} email 
+ * @param {string} email
  * @returns {object} User
  */
 const getByEmail = (email) => {
-  return User.findOne({ email });
+  return User.findOne({ email: { $regex: new RegExp(email, "i") } });
 };
 
 /**
