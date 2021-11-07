@@ -8,12 +8,6 @@ const router = express.Router();
 
 router.use("/auth", auth);
 
-router.use(authMiddleware);
-
-router.use("/notes", notes);
-
-router.use("/users", users);
-
 router.get("/health", (req, res) => {
   // https://gist.github.com/ali-kamalizade/05488b11e703b5e26c46e3a3d913bedf
   const healthcheck = {
@@ -28,6 +22,12 @@ router.get("/health", (req, res) => {
     res.status(503).send();
   }
 });
+
+router.use(authMiddleware);
+
+router.use("/notes", notes);
+
+router.use("/users", users);
 
 router.use((err, req, res, next) => {
   console.error(err.message);
