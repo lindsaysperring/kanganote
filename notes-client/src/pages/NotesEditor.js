@@ -91,6 +91,13 @@ export default function NotesEditor() {
 
   return (
     <div>
+      <div>
+        <button
+          onClick={() => history.goBack()}
+        >
+          <i className="fas fa-arrow-left"></i>
+        </button>
+      </div>
       <ReactQuill
         onChange={(html, delta, source, editor) => {
           console.log("contents", editor.getContents());
